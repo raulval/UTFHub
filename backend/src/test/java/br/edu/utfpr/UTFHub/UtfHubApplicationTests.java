@@ -1,5 +1,7 @@
 package br.edu.utfpr.UTFHub;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -7,7 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 class UtfHubApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void testeInicial() {
+		String texto = "Esse é um teste utilizando Junit";
+		assertEquals("Esse é um teste utilizando Junit", texto);
 	}
 
 }
