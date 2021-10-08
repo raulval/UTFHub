@@ -12,7 +12,7 @@ Um hub de conexões que tem como objetivo conectar alunos para discussões sobre
 
 - Backend
   - Spring Boot com os módulos
-    - Srping Web
+    - Spring Web
     - Spring Security
     - Lombok
     - Spring Data JPA
