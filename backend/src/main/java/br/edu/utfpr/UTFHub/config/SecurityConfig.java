@@ -1,4 +1,4 @@
-package config;
+package br.edu.utfpr.UTFHub.config;
 
 import java.util.Arrays;
 
