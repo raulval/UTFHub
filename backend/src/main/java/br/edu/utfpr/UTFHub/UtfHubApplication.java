@@ -9,7 +9,6 @@ public class UtfHubApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(UtfHubApplication.class, args);
-
 	
 	}
 
