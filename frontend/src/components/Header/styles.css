@@ -1,0 +1,44 @@
+.header {
+  position: relative;
+  width: 100%;
+  height: 65px;
+  top: -80%;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 26px;
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.25));
+}
+
+.conteudo-header {
+  width: 100%;
+  padding: 8px, 37px, 8px, 13px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.conteudo-header a {
+  font-size: 20px; 
+  color: white;
+  margin-right: 41px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.conteudo-header a:hover {
+  color: #6e4b00;
+}
+
+.conteudo-header div {
+    width: 61px;
+    height: 61px;
+    margin-right: 30px;
+    border-radius: 9999px;
+    border-style: solid;
+    border-width: 2px;
+    border-style: solid;
+    border-color: white;
+}

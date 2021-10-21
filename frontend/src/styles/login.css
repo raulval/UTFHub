@@ -1,0 +1,156 @@
+#page {
+  display: flex;
+  align-items: stretch;
+  height: 100vh;
+}
+
+aside {
+  flex: 7;
+
+  background: linear-gradient(325.8deg, #FF941A 0%, #FFCC00 100%);
+  color: #FFF;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+    
+  /* padding: 120px 80px; */
+}
+
+aside img {
+  max-width: 320px;
+}
+
+aside strong {
+  font: 700 36px 'Poppins', sans-serif;
+  line-height: 42px;
+  margin-top: 16px;
+}
+
+aside p {
+  font-size: 24px;
+  line-height: 32px;
+  margin-top: 16px;
+  margin-left: 12%;
+  color: #f8f8f8;
+}
+
+main {
+  flex: 8;
+
+  padding: 0 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 320px;
+  align-items: center;
+  text-align: center;
+}
+
+.main-content img {
+  width: 400px;
+  margin-bottom: 20px;
+}
+
+form input {
+  height: 50px;
+  border-radius: 8px;
+  padding: 0 16px;
+  background: #FFF;
+  border: 1px solid #a8a8b3;
+}
+
+.label {
+  margin-top: 10px;
+  display: flex;
+}
+
+form button { 
+  width: 320px;
+  height: 45px;
+  margin-top: 25px;
+  background: #FF941A;
+  color: #FFF;
+  border-radius: 8px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+form button:hover {
+  filter: brightness(85%);
+  transition: all 0.2s;
+}
+
+form button, form input {
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+}
+
+.separator {
+  font-size: 14px;
+  color: #5F5F5F;
+
+  margin: 45px 0;
+  display: flex;
+  align-items: center;
+}
+
+.separator::before {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #5F5F5F;
+  margin-right: 16px;
+}
+
+.separator::after {
+  content: '';
+  flex: 1;
+  width: 120px;
+  height: 1px;
+  background: #5F5F5F;
+  margin-left: 16px;
+}
+
+.cadastrar { 
+  font-family: "Poppins", sans-serif;
+  width: 320px;
+  height: 45px;
+  background: #297FFF;
+  color: #FFF;
+  border-radius: 8px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 16px;
+  font-weight: 500;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.cadastrar:hover {
+  filter: brightness(85%);
+  transition: all 0.2s;
+}
+
+.icone {
+  margin: 5px;
+}
+
+

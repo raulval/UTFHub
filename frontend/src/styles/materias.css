@@ -1,0 +1,62 @@
+#page-materias {
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+}
+
+#page-materias #search-content {
+  top: -67%;
+}
+
+#page-materias .main-container {
+  width: 80%;
+  height: 100%;
+  margin: -30% auto 51px;
+
+  background: #FFFFFF;
+
+  border: 1px solid #E6E6F0;
+  box-sizing: border-box;
+  border-radius: 8px;
+
+  justify-content: center;
+}
+
+#page-materias .main-container fieldset {
+  width: 70%;
+  border: 0;
+  padding: 0 2.4rem;
+}
+
+#page-materias .main-container fieldset legend {
+  font: 700 28px 'Poppins', sans-serif;
+  color: #4D3926;
+  margin-top: 6rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid #E6E6F0;
+}
+
+#page-materias .main-container button {
+  width: 193px;
+  height: 41px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #297FFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  color: #fff;
+  font: 500 18px "Poppins", sans-serif;
+
+  margin-left: 65%;
+}
+
+#page-materias .main-container button:hover {
+  filter: brightness(85%);
+}
