@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { FaRegEnvelope } from "react-icons/fa";
 import { useHistory } from "react-router";
+import { ReactSVG } from 'react-svg'
+
 import illustrationImg from "../assets/images/illustration.svg";
 import logo from "../assets/images/logo.svg";
 import "../styles/login.css";
@@ -15,7 +17,7 @@ export function Login() {
   return (
     <div id="page">
       <aside>
-        <img
+        <ReactSVG
           src={illustrationImg}
           alt="Ilustração simbolizando perguntas e respostas"
         />
@@ -28,7 +30,7 @@ export function Login() {
       </aside>
       <main>
         <div className="main-content">
-          <img src={logo} alt="Logo UTFHub" />
+          <ReactSVG src={logo} alt="Logo UTFHub" />
 
           <form onSubmit={fazerLogin}>
             <div className="label">

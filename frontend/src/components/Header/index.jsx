@@ -1,5 +1,6 @@
 import { FaSistrix } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { ReactSVG } from "react-svg";
 import User from "../../assets/images/user.svg";
 import "./styles.css";
 
@@ -15,7 +16,7 @@ const Header = () => {
           <FaSistrix size={33} />
         </Link>
         <div>
-          <img src={User} alt="Ícone de usuário" />
+          <ReactSVG src={User} alt="Ícone de usuário" />
         </div>
         <Link to="">Perfil</Link>
       </div>
