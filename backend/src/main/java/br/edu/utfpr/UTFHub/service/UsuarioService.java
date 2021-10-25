@@ -22,6 +22,11 @@ public class UsuarioService {
 	}
 	
 	public UsuarioDTO insert(Usuario usuario) {
+		Integer count = repository.countEmail(usuario.getEmail());
+		if(count > 0) {
+			return null;
+		}
+		
 		Usuario usuarioSalvo = repository.save(usuario);
 		return new UsuarioDTO(usuarioSalvo.getId(),usuarioSalvo.getNome(),usuarioSalvo.getEmail(),usuarioSalvo.getCampus(),usuarioSalvo.getCurso());
 		
