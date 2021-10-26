@@ -1,11 +1,12 @@
-import { useHistory } from "react-router";
+import { useState } from "react";
 import Header from "../components/Header";
 import HeaderContainer from "../components/HeaderContainer";
+import ModalAddMaterias from "../components/ModalAddMaterias";
 import Search from "../components/Search";
 import "../styles/materias.css";
 
 export function Materias() {
-  const history = useHistory();
+  const [modalShow, setModalShow] = useState(false);
 
   return (
     <div id="page-materias">
@@ -17,9 +18,13 @@ export function Materias() {
           <fieldset>
             <legend>
               Matérias
-              <button onClick={() => history.push("/add-materias")}>
+              <button onClick={() => setModalShow(true)}>
                 Adicionar matéria
               </button>
+              <ModalAddMaterias
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+              />
             </legend>
           </fieldset>
         </main>

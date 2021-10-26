@@ -16,12 +16,11 @@
 
 .page-header-nlogo .header-content {
   width: 80%;
-  margin: 0 auto;
   position: relative;
   margin: 100px auto;
 }
 
-.page-header-nlogo .header-content img {
+.page-header-nlogo .header-content svg {
   width: 126px;
   height: 39px;
   position: relative;
