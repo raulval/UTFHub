@@ -26,8 +26,11 @@ public class UsuarioController {
 		return ResponseEntity.ok(list);
 	}
 	@PostMapping
-	public ResponseEntity<UsuarioDTO> insert(@RequestBody Usuario usuario){
+	public ResponseEntity<String> insert(@RequestBody Usuario usuario){
 		UsuarioDTO usuarioCriado = usuarioService.insert(usuario);
-		return ResponseEntity.ok(usuarioCriado);
+		if (usuarioCriado == null) {
+			return ResponseEntity.badRequest().body("O email fornecido está indisponível !");
+		}
+		return ResponseEntity.ok("Usuário cadastrado com sucesso");
 	}
 }
