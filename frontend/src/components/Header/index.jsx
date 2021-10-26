@@ -15,9 +15,12 @@ const Header = () => {
         <Link to="/pesquisar">
           <FaSistrix size={33} />
         </Link>
-        <div>
-          <ReactSVG src={User} alt="Ícone de usuário" />
-        </div>
+        <ReactSVG
+          src={User}
+          alt="Ícone de usuário"
+          className="header-user-img"
+        />
+
         <Link to="">Perfil</Link>
       </div>
     </header>

@@ -175,3 +175,7 @@
 #page-form main footer button:hover {
   background: #FF941A;
 }
+
+.error-message {
+  color: #F44336;
+}
