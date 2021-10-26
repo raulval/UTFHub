@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,7 +29,9 @@ public class UsuarioService {
 		if(count > 0) {
 			return null;
 		}
-		
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String encodedPassword = passwordEncoder.encode(usuario.getSenha());
+		usuario.setSenha(encodedPassword);
 		Usuario usuarioSalvo = repository.save(usuario);
 		return new UsuarioDTO(usuarioSalvo.getId(),usuarioSalvo.getNome(),usuarioSalvo.getEmail(),usuarioSalvo.getCampus(),usuarioSalvo.getCurso());
 		
@@ -37,7 +40,11 @@ public class UsuarioService {
 	public boolean update(Usuario usuario) {
 		Optional<Usuario> usuarioDB = repository.findById(usuario.getId());
 		if (usuarioDB.isPresent()) {
-			if(usuarioDB.get().getSenha().equals(usuario.getSenha())){
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			if(encoder.matches(usuario.getSenha(),usuarioDB.get().getSenha())){
+				BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+				String encodedPassword = passwordEncoder.encode(usuario.getSenha());
+				usuario.setSenha(encodedPassword);
 				repository.save(usuario);
 				return true;
 			}
@@ -48,7 +55,8 @@ public class UsuarioService {
 	public boolean delete(Usuario usuario) {
 		Optional<Usuario> usuarioDB = repository.findById(usuario.getId());
 		if (usuarioDB.isPresent()) {
-			if(usuarioDB.get().getSenha().equals(usuario.getSenha())){
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			if(encoder.matches(usuario.getSenha(),usuarioDB.get().getSenha())){
 				repository.delete(usuario);
 				return true;
 			}
