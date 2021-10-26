@@ -1,5 +1,7 @@
 package br.edu.utfpr.UTFHub.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,4 +33,27 @@ public class UsuarioService {
 		return new UsuarioDTO(usuarioSalvo.getId(),usuarioSalvo.getNome(),usuarioSalvo.getEmail(),usuarioSalvo.getCampus(),usuarioSalvo.getCurso());
 		
 	}
+	
+	public boolean update(Usuario usuario) {
+		Optional<Usuario> usuarioDB = repository.findById(usuario.getId());
+		if (usuarioDB.isPresent()) {
+			if(usuarioDB.get().getSenha().equals(usuario.getSenha())){
+				repository.save(usuario);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public boolean delete(Usuario usuario) {
+		Optional<Usuario> usuarioDB = repository.findById(usuario.getId());
+		if (usuarioDB.isPresent()) {
+			if(usuarioDB.get().getSenha().equals(usuario.getSenha())){
+				repository.delete(usuario);
+				return true;
+			}
+		}
+		return false;
+	}
+	
 }
