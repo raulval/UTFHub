@@ -4,8 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +33,22 @@ public class UsuarioController {
 		if (usuarioCriado == null) {
 			return ResponseEntity.badRequest().body("O email fornecido está indisponível !");
 		}
-		return ResponseEntity.ok("Usuário cadastrado com sucesso");
+		return ResponseEntity.ok("Usuário cadastrado com sucesso !");
+	}
+	@PutMapping
+	public ResponseEntity<String> update(@RequestBody Usuario usuario){
+		boolean res = usuarioService.update(usuario);
+		if (!res) {
+			return ResponseEntity.badRequest().body("A senha informada é inválida !");
+		}
+		return ResponseEntity.ok("Usuário atualizado com sucesso !");
+	}
+	@DeleteMapping
+	public ResponseEntity<String> delete(@RequestBody Usuario usuario){
+		boolean res = usuarioService.delete(usuario);
+		if (!res) {
+			return ResponseEntity.badRequest().body("A senha informada é inválida !");
+		}
+		return ResponseEntity.ok("Usuário deletado com sucesso !");
 	}
 }
