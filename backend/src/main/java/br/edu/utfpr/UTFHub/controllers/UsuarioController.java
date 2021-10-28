@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.utfpr.UTFHub.dto.UsuarioDTO;
+import br.edu.utfpr.UTFHub.entities.Login;
 import br.edu.utfpr.UTFHub.entities.Usuario;
 import br.edu.utfpr.UTFHub.service.UsuarioService;
 
@@ -26,6 +27,14 @@ public class UsuarioController {
 	public ResponseEntity<Page<UsuarioDTO>> findAll(Pageable pageable) {
 		Page<UsuarioDTO> list = usuarioService.findAll(pageable);
 		return ResponseEntity.ok(list);
+	}
+	@PostMapping(value="/login")
+	public ResponseEntity<UsuarioDTO> login(@RequestBody Login login){
+		UsuarioDTO usuarioLogado = usuarioService.Login(login.getEmail(),login.getSenha());
+		if(usuarioLogado == null) {
+			return ResponseEntity.badRequest().body(usuarioLogado);
+		}
+		return ResponseEntity.ok(usuarioLogado);
 	}
 	@PostMapping
 	public ResponseEntity<String> insert(@RequestBody Usuario usuario){
