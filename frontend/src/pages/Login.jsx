@@ -1,21 +1,69 @@
+import { yupResolver } from "@hookform/resolvers/yup";
+import axios from "axios";
 import { useState } from "react";
-import { FaRegEnvelope } from "react-icons/fa";
-import { useHistory } from "react-router";
-import { ReactSVG } from 'react-svg'
-
+import { useForm } from "react-hook-form";
+import { FaExclamationCircle, FaRegEnvelope } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect, useHistory } from "react-router";
+import { ReactSVG } from "react-svg";
+import * as yup from "yup";
 import illustrationImg from "../assets/images/illustration.svg";
 import logo from "../assets/images/logo.svg";
 import "../styles/login.css";
 
-export function Login() {
-  const history = useHistory();
-  const [email, setEmail] = useState("");
-  const [senha, setSenha] = useState("");
+const validationLogin = yup.object().shape({
+  email: yup
+    .string()
+    .required("A e-mail é obrigatório")
+    .email("E-mail inválido")
+    .matches("@alunos.utfpr.edu.br", "Use o e-mail institucional"),
+  senha: yup
+    .string()
+    .required("A senha é obrigatória")
+    .min(6, "Senha menor que 6 caracteres"),
+});
 
-  async function fazerLogin() {}
+export function Login() {
+  const baseURL = "https://utfhub.herokuapp.com/usuario/login";
+  const history = useHistory();
+  const dispatch = useDispatch();
+
+  const [error, setError] = useState();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(validationLogin),
+  });
+
+  const fazerLogin = (data) => {
+    axios
+      .post(baseURL, data)
+      .then((res) => {
+        console.log(res.data);
+        dispatch({
+          type: "LOGIN",
+          userId: res.data.id,
+          userNome: res.data.nome,
+          userEmail: res.data.email,
+          userCampus: res.data.campus,
+          userCursor: res.data.curso,
+        });
+        history.push("/home");
+      })
+      .catch((error) => {
+        console.log(error.response);
+        setError(error.response.status);
+      });
+  };
 
   return (
     <div id="page">
+      {useSelector((state) => state.usuarioLogado) > 0 ? (
+        <Redirect to="/home" />
+      ) : null}
       <aside>
         <ReactSVG
           src={illustrationImg}
@@ -32,28 +80,42 @@ export function Login() {
         <div className="main-content">
           <ReactSVG src={logo} alt="Logo UTFHub" />
 
-          <form onSubmit={fazerLogin}>
+          <form onSubmit={handleSubmit(fazerLogin)}>
             <div className="label">
               <label>E-mail Institucional</label>
             </div>
             <input
               type="email"
+              id="email"
               placeholder="nome@alunos.utfpr.edu.br"
-              onChange={(event) => setEmail(event.target.value)}
-              value={email}
+              name="email"
+              {...register("email")}
               required
             />
+            <span className="error-message">{errors.email?.message}</span>
             <div className="label">
               <label>Senha</label>
             </div>
             <input
               type="password"
-              placeholder="********"
-              onChange={(event) => setSenha(event.target.value)}
-              value={senha}
+              id="senha"
+              placeholder="*******"
+              name="senha"
+              {...register("senha")}
               required
             />
+            <span className="error-message">{errors.senha?.message}</span>
             <button type="submit">Entrar</button>
+            {error === 400 ? (
+              <p style={{ paddingTop: 10 }}>
+                <FaExclamationCircle
+                  color="#F44336"
+                  size={30}
+                  className="icone"
+                />
+                E-mail ou senha incorretos!
+              </p>
+            ) : null}
           </form>
 
           <div className="separator">Não tem uma conta?</div>

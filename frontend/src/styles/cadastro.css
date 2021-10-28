@@ -3,15 +3,11 @@
   height: 100vh;
 }
 
-#page-form .page-header .header-content {
-  margin-bottom: 6.4rem;
-}
-
 .voltar {
   position: absolute;
   width: 45px;
   height: 45px;
-  left: 80%;
+  left: 75%;
   top: 162px;
   color: #fff;
   cursor: pointer;
@@ -26,7 +22,7 @@
   position: absolute;
   width: 447px;
   height: 45px;
-  left: 38%;
+  left: 37%;
   top: 361px;
 
   font-weight: bold;
@@ -43,7 +39,7 @@
   width: 100%;
   max-width: 60rem;
   border-radius: 8px;
-  margin: -15% auto 51px;
+  margin: -23% auto 51px;
   padding-top: 80px;
   overflow: hidden;
 }
