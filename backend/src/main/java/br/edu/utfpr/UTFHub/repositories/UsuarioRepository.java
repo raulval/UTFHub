@@ -11,4 +11,9 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 			value = "SELECT COUNT(*) FROM usuario WHERE email = :email",
 			nativeQuery = true)
 	Integer countEmail(@Param(value= "email") String email);
+	
+	@Query(
+			value = "SELECT * FROM usuario WHERE email = :email LIMIT 1",
+			nativeQuery = true)
+	Usuario findByEmail(@Param(value= "email") String email);
 }
