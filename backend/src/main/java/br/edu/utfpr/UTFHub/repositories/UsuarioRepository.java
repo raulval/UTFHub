@@ -7,6 +7,9 @@ import org.springframework.data.repository.query.Param;
 import br.edu.utfpr.UTFHub.entities.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
+	
+	Usuario findByUsername(String username);
+	
 	@Query(
 			value = "SELECT COUNT(*) FROM usuario WHERE email = :email",
 			nativeQuery = true)
