@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import Header from "../components/Header";
 import HeaderContainerLogo from "../components/HeaderContainerLogo";
@@ -6,6 +7,7 @@ import "../styles/home.css";
 
 export function Home() {
   const history = useHistory();
+  const userNome = useSelector((state) => state.userNome);
 
   return (
     <div id="page-home">

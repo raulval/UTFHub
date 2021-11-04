@@ -25,10 +25,14 @@
   filter: brightness(85%);
 }
 
+#page-home #search-content {
+  top: -50%
+}
+
 #page-home .main-container {
   width: 80%;
   height: 100%;
-  margin: -18% auto 51px;
+  margin: -20% auto 51px;
 
   background: #FFFFFF;
 
