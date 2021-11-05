@@ -1,15 +1,16 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Modal } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
 const validationMat = yup.object().shape({
-  nomeMateria: yup.string().required("O campo é obrigatório"),
+  nome: yup.string().required("O campo é obrigatório"),
 });
 
 function ModalAddMaterias(props) {
-  // const baseURL = "https://utfhub.herokuapp.com/usuario";
+  const baseURL = "https://utfhub.herokuapp.com/materia";
 
   const {
     register,
@@ -20,16 +21,19 @@ function ModalAddMaterias(props) {
   });
 
   const adicionarMateria = (data) => {
-    // axios
-    //   .post(baseURL, data)
-    //   .then((res) => {
-    //     console.log(res.data.content);
-    //     alert("Cadastro realizado com sucesso!");
-    //     history.push("/");
-    //   })
-    //   .catch((error) => {
-    //     setError(error.response.data);
-    //   });
+    const dadosMateria = {
+      nome: data.nome,
+      tipo: 0,
+    };
+
+    axios
+      .post(baseURL, dadosMateria)
+      .then((res) => {
+        props.onHide();
+      })
+      .catch((error) => {
+        alert("Erro: " + error.response.data);
+      });
   };
 
   return (
@@ -47,13 +51,9 @@ function ModalAddMaterias(props) {
       <Modal.Body>
         <form>
           <div>
-            <label htmlFor="nomeMateria">Nome da Matéria</label>
-            <input
-              id="nomeMateria"
-              name="nomeMateria"
-              {...register("nomeMateria")}
-            />
-            <span className="error-message">{errors.nomeMateria?.message}</span>
+            <label htmlFor="nome">Nome da Matéria</label>
+            <input id="nome" name="nome" {...register("nome")} />
+            <span className="error-message">{errors.nome?.message}</span>
           </div>
         </form>
       </Modal.Body>
