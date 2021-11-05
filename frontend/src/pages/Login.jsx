@@ -14,7 +14,7 @@ import "../styles/login.css";
 const validationLogin = yup.object().shape({
   email: yup
     .string()
-    .required("A e-mail é obrigatório")
+    .required("O e-mail é obrigatório")
     .email("E-mail inválido")
     .matches("@alunos.utfpr.edu.br", "Use o e-mail institucional"),
   senha: yup
@@ -90,7 +90,6 @@ export function Login() {
               placeholder="nome@alunos.utfpr.edu.br"
               name="email"
               {...register("email")}
-              required
             />
             <span className="error-message">{errors.email?.message}</span>
             <div className="label">
@@ -102,7 +101,6 @@ export function Login() {
               placeholder="*******"
               name="senha"
               {...register("senha")}
-              required
             />
             <span className="error-message">{errors.senha?.message}</span>
             <button type="submit">Entrar</button>
