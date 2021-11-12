@@ -1,5 +1,6 @@
 package br.edu.utfpr.UTFHub.stubs;
 
+import br.edu.utfpr.UTFHub.dto.UsuarioDTO;
 import br.edu.utfpr.UTFHub.entities.Materia;
 import br.edu.utfpr.UTFHub.entities.Usuario;
 import org.springframework.data.domain.Page;
@@ -18,6 +19,16 @@ public class UsuarioStub {
                 .nome("nome")
                 .email("email")
                 .senha("senha")
+                .campus("campus")
+                .curso("curso")
+                .build();
+    }
+
+    public static UsuarioDTO createUsuarioDTO() {
+        return UsuarioDTO.builder()
+                .id(10L)
+                .nome("nome")
+                .email("email")
                 .campus("campus")
                 .curso("curso")
                 .build();
