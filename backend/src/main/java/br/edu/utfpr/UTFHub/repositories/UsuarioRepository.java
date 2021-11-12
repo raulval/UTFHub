@@ -16,4 +16,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 			value = "SELECT * FROM usuario WHERE email = :email LIMIT 1",
 			nativeQuery = true)
 	Usuario findByEmail(@Param(value= "email") String email);
+
 }

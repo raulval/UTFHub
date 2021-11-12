@@ -30,7 +30,7 @@ public class UsuarioController {
 	}
 	@PostMapping(value="/login")
 	public ResponseEntity<UsuarioDTO> login(@RequestBody Login login){
-		UsuarioDTO usuarioLogado = usuarioService.Login(login.getEmail(),login.getSenha());
+		UsuarioDTO usuarioLogado = usuarioService.login(login.getEmail(),login.getSenha());
 		if(usuarioLogado == null) {
 			return ResponseEntity.badRequest().body(usuarioLogado);
 		}

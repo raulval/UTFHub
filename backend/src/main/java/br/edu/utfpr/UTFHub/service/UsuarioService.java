@@ -63,7 +63,7 @@ public class UsuarioService {
 		}
 		return false;
 	}
-	public UsuarioDTO Login(String email, String senha) {
+	public UsuarioDTO login(String email, String senha) {
 		Optional<Usuario> usuarioDB = Optional.ofNullable(repository.findByEmail(email));
 		if (usuarioDB.isPresent()) {
 			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();

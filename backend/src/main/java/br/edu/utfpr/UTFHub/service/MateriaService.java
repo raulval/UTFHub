@@ -1,17 +1,14 @@
 package br.edu.utfpr.UTFHub.service;
 
-import java.util.Optional;
-
+import br.edu.utfpr.UTFHub.entities.Materia;
+import br.edu.utfpr.UTFHub.repositories.MateriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.edu.utfpr.UTFHub.entities.Materia;
-import br.edu.utfpr.UTFHub.entities.Usuario;
-import br.edu.utfpr.UTFHub.repositories.MateriaRepository;
+import java.util.Optional;
 
 @Service
 public class MateriaService {
@@ -20,8 +17,8 @@ public class MateriaService {
 
 	@Transactional(readOnly = true)
 	public Page<Materia> findAll(Pageable pageable) {
-		Page<Materia> result = repository.findAll(pageable);
-		return result;
+		return repository.findAll(pageable);
+
 	}
 
 	public Materia insert(Materia materia) {
