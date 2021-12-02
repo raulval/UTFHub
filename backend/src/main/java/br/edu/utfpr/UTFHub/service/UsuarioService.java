@@ -67,7 +67,7 @@ public class UsuarioService {
 		Optional<Usuario> usuarioDB = Optional.ofNullable(repository.findByEmail(email));
 		if (usuarioDB.isPresent()) {
 			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-			if(encoder.matches(senha,usuarioDB.get().getSenha())){;
+			if(encoder.matches(senha,usuarioDB.get().getSenha())){
 				return new UsuarioDTO(usuarioDB.get().getId(),usuarioDB.get().getNome(),usuarioDB.get().getEmail(),usuarioDB.get().getCampus(),usuarioDB.get().getCurso());
 			}
 		}

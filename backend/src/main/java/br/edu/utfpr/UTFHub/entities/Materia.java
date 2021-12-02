@@ -1,13 +1,12 @@
 package br.edu.utfpr.UTFHub.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -23,5 +22,20 @@ public class Materia {
 	private String nome;
 	@Column(nullable = false, length = 4)
 	private Long tipo;
-	
+
+	@OneToMany(
+			cascade = CascadeType.ALL
+	)
+	@JoinColumn(name = "materiaId", referencedColumnName = "id")
+	@JsonIgnore
+	private List<Post> posts = new ArrayList<>();
+
+//	@OneToMany(
+//			mappedBy = "materia",
+//			cascade = CascadeType.ALL,
+//			orphanRemoval = true)
+//	@JsonIgnore
+//	private List<Post> post = new ArrayList<>();
+
+
 }
