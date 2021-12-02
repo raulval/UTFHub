@@ -125,3 +125,52 @@
   font-size: 16px;
   margin-left: 10px;
 }
+
+#page-materiaRoom .container-posts .like-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -30px;
+  margin-right: 70px;
+}
+
+#page-materiaRoom .container-posts .edit-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -25px;
+  margin-right: 35px;
+}
+
+#page-materiaRoom .container-posts .delete-button {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -25px;
+}
+
+#page-materiaRoom .container-posts button {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+#page-materiaRoom .container-posts button :hover {
+  filter: brightness(0.8);
+}
+
+#page-materiaRoom .container-posts .like-button .like {
+  color: #737380;
+  width: 22px;
+  height: 22px;
+}
+
+#page-materiaRoom .container-posts .edit {
+  color: #737380;
+  width: 21px;
+  height: 21px;
+}
+
+#page-materiaRoom .container-posts .delete {
+  color: #737380;
+  width: 21px;
+  height: 21px;
+}

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaPen, FaTrash } from "react-icons/fa";
+import { FiThumbsUp } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { ReactSVG } from "react-svg";
@@ -12,6 +13,7 @@ import "../styles/materiaRoom.css";
 export function MateriaRoom() {
   const nomeMateria = useSelector((state) => state.nomeMateria);
   const nomeUsuario = useSelector((state) => state.userNome);
+  const usuarioId = useSelector((state) => state.userId);
   const params = useParams();
 
   const [novaPergunta, setNovaPergunta] = useState("");
@@ -39,9 +41,8 @@ export function MateriaRoom() {
       autor: nomeUsuario,
       pergunta: novaPergunta,
       materiaId: materiaId,
+      autorId: usuarioId,
     };
-
-    console.log(dadosPost);
 
     axios
       .post(baseURL, dadosPost)
@@ -53,6 +54,19 @@ export function MateriaRoom() {
         console.log("Erro: " + error);
       });
   }
+
+  function deletarPost(id) {
+    axios
+      .delete(`${baseURL}/${id}`)
+      .then((res) => {
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log("Erro: " + error);
+      });
+  }
+
+  function handleLike(postId) {}
 
   return (
     <div id="page-materiaRoom">
@@ -94,6 +108,37 @@ export function MateriaRoom() {
                   />
                   <span>{post.autor}</span>
                 </div>
+
+                <div className="like-button">
+                  <button
+                    onClick={() => handleLike(post.id)}
+                    aria-label="Marcar como gostei"
+                  >
+                    <FiThumbsUp className="like" />
+                  </button>
+                  <span>5</span>
+                </div>
+                {post.autorId === usuarioId && (
+                  <>
+                    <div className="edit-button">
+                      <button
+                        onClick={() => handleLike(post.id)}
+                        aria-label="Editar Post"
+                      >
+                        <FaPen className="edit" />
+                      </button>
+                    </div>
+
+                    <div className="delete-button">
+                      <button
+                        onClick={() => deletarPost(post.id)}
+                        aria-label="Deletar Post"
+                      >
+                        <FaTrash className="delete" />
+                      </button>
+                    </div>
+                  </>
+                )}
               </div>
             ))
           ) : (
