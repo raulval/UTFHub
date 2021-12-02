@@ -30,12 +30,5 @@ public class Materia {
 	@JsonIgnore
 	private List<Post> posts = new ArrayList<>();
 
-//	@OneToMany(
-//			mappedBy = "materia",
-//			cascade = CascadeType.ALL,
-//			orphanRemoval = true)
-//	@JsonIgnore
-//	private List<Post> post = new ArrayList<>();
-
 
 }

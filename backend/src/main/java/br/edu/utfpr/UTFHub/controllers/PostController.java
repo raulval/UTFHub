@@ -58,12 +58,14 @@ public class PostController {
 		return ResponseEntity.ok("Pergunta atualizado com sucesso !");
 	}
 
-	@DeleteMapping("/materia/{materiaId}/posts")
-	public ResponseEntity<String> delete(@RequestBody Post post){
-		boolean res = postService.delete(post);
+	@DeleteMapping("/materia/{materiaId}/posts/{id}")
+	public ResponseEntity<String> deletePost(@PathVariable (value = "materiaId") Long materiaId, @PathVariable (value = "id") Long id, Post post) {
+		boolean res = postService.deletePost(post);
 		if (!res) {
 			return ResponseEntity.badRequest().body("Dados inválidos !");
 		}
 		return ResponseEntity.ok("Pergunta deletada com sucesso !");
 	}
+
+
 }

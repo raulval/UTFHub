@@ -19,7 +19,7 @@ public class MateriaController {
 	private final MateriaService materiaService;
 	
 	@GetMapping
-	public ResponseEntity<Page<Materia>> findAll(@RequestParam(name="pageRequest") Pageable pageable){
+	public ResponseEntity<Page<Materia>> findAll(Pageable pageable){
 		Page<Materia> list = materiaService.findAll(pageable);
 		
 		return ResponseEntity.ok(list);

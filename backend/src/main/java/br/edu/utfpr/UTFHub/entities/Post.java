@@ -21,13 +21,8 @@ public class Post {
 	private String pergunta;
 	@Column(nullable = false)
 	private Long materiaId;
-
-
-//	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-//	@JoinColumn(name = "materia_id", nullable = false)
-//	@JsonIgnore
-//	private Materia materia;
-
+	@Column(nullable = false)
+	private Long autorId;
 
 	
 }

@@ -7,7 +7,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Optional;
 
@@ -41,7 +40,8 @@ public class PostService {
 		}
 		return false;
 	}
-	public boolean delete(Post post) {
+
+	public boolean deletePost(Post post) {
 		Optional<Post> postDB = repository.findById(post.getId());
 		if (postDB.isPresent()) {
 			repository.delete(post);
