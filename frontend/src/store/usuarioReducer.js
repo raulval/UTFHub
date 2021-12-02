@@ -20,6 +20,11 @@ function usuarioReducer(state = INITIAL_STATE, action) {
         usuarioLogado: 0,
         usuarioId: "",
       };
+    case "MATERIA":
+      return {
+        ...state,
+        nomeMateria: action.nomeMateria,
+      };
     default:
       return state;
   }

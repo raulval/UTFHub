@@ -10,7 +10,7 @@
 
 #page-materias .main-container {
   width: 80%;
-  height: 100%;
+  min-height: 100%; /* Tentar tirar o height ou min-height */
   margin: -30% auto 51px;
 
   background: #FFFFFF;
@@ -69,8 +69,15 @@
 }
 
 #page-materias .container-list-materias {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#page-materias .container-list-materias button {
   width: 734px;
-  height: 71px;  
+  height: 71px; 
+  margin-left: 0px;
   background: #FEFEFE;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;

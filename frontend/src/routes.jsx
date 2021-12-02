@@ -4,6 +4,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import { Cadastro } from "./pages/Cadastro";
 import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
+import { MateriaRoom } from "./pages/MateriaRoom";
 import { Materias } from "./pages/Materias";
 import { persistor, store } from "./store";
 
@@ -17,6 +18,7 @@ function Routes() {
             <Route exact path="/cadastro" component={Cadastro} />
             <Route exact path="/home" component={Home} />
             <Route exact path="/materias" component={Materias} />
+            <Route path="/materias/:id" component={MateriaRoom} />
           </Switch>
         </BrowserRouter>
       </PersistGate>

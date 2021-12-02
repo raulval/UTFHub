@@ -1,0 +1,127 @@
+#page-materiaRoom {
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;
+}
+
+#page-materiaRoom .voltar {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  left: 80%;
+  top: 162px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+#page-materiaRoom .voltar:hover {
+  color: #6e4b00;
+}
+
+#page-materiaRoom .main-container {
+  width: 80%;
+  min-height: 100%; /* Tentar tirar o height ou min-height */
+  margin: -30% auto 51px;
+
+  background: #FFFFFF;
+
+  border: 1px solid #E6E6F0;
+  box-sizing: border-box;
+  border-radius: 8px;
+
+  justify-content: center;
+}
+
+#page-materiaRoom .main-container main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#page-materiaRoom .main-container fieldset {
+  width: 70%;
+  border: 0;
+  padding: 0 2.4rem;
+}
+
+#page-materiaRoom .main-container fieldset legend {
+  font: 700 28px 'Poppins', sans-serif;
+  color: #4D3926;
+  margin-top: 6rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding-bottom: 1.6rem;
+  border-bottom: 1px solid #E6E6F0;
+}
+
+#page-materiaRoom #pergunta {
+  width: 780px;
+  min-height: 130px; 
+  border: 0;
+  padding: 16px;
+  border-radius: 8px;
+  background: #FEFEFE;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  resize: vertical;
+}
+
+#page-materiaRoom .form-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#page-materiaRoom .form-footer button {
+  width: 193px;
+  height: 50px;
+  outline: none;
+  border: none;
+  transition: all 0.2s;
+  background: #297FFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  color: #fff;
+  font: 500 18px "Poppins", sans-serif;
+}
+
+#page-materiaRoom .container-posts {
+  width: 780px;
+  min-height: 150px; 
+  margin-left: 0px;
+  background: #FEFEFE;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  /* display: flex; */
+  /* align-items: center; */
+  justify-content: flex-start;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  padding: 20px;
+}
+
+#page-materiaRoom .container-posts p {
+  font-size: 18px;
+
+}
+
+#page-materiaRoom .autor-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#page-materiaRoom .container-posts svg {
+  width: 30px;
+}
+
+#page-materiaRoom .container-posts span {
+  color: #737380;
+  font-size: 16px;
+  margin-left: 10px;
+}

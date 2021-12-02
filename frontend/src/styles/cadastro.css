@@ -3,7 +3,7 @@
   height: 100vh;
 }
 
-.voltar {
+#page-form .voltar {
   position: absolute;
   width: 45px;
   height: 45px;
@@ -14,7 +14,7 @@
   transition: all 0.2s;
 }
 
-.voltar:hover {
+#page-form .voltar:hover {
   color: #6e4b00;
 }
 
