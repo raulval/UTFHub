@@ -8,11 +8,13 @@ import java.util.Collections;
 
 public class MateriaStub {
     public static Page<Materia> createPage() {
-        return new PageImpl<>(Collections.emptyList());
+        return new PageImpl<>(Collections.singletonList(createMateria()));
     }
     public static Materia createMateria() {
         return Materia.builder()
                 .id(10L)
+                .nome("nome")
+                .tipo(0L)
                 .build();
     }
 }

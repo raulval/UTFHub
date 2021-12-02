@@ -1,5 +1,6 @@
 package br.edu.utfpr.UTFHub.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,11 +18,12 @@ import br.edu.utfpr.UTFHub.entities.Login;
 import br.edu.utfpr.UTFHub.entities.Usuario;
 import br.edu.utfpr.UTFHub.service.UsuarioService;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping(value = "/usuario")
 public class UsuarioController {
-	@Autowired
-	private UsuarioService usuarioService;
+
+	private final UsuarioService usuarioService;
 
 	@GetMapping
 	public ResponseEntity<Page<UsuarioDTO>> findAll(Pageable pageable) {
