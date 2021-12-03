@@ -25,6 +25,12 @@ function usuarioReducer(state = INITIAL_STATE, action) {
         ...state,
         nomeMateria: action.nomeMateria,
       };
+    case "POST":
+      return {
+        ...state,
+        postId: action.postId,
+        postPergunta: action.postPergunta,
+      };
     default:
       return state;
   }

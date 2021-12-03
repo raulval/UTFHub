@@ -24,7 +24,7 @@ const validationCad = yup.object().shape({
 });
 
 export function Cadastro() {
-  const baseURL = "https://utfhub.herokuapp.com/usuario";
+  const baseURL = "http://localhost:8080/usuario";
   const history = useHistory();
 
   const {

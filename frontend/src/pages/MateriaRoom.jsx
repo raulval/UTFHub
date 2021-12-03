@@ -2,22 +2,25 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaArrowLeft, FaPen, FaTrash } from "react-icons/fa";
 import { FiThumbsUp } from "react-icons/fi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { ReactSVG } from "react-svg";
 import User from "../assets/images/user.svg";
 import Header from "../components/Header";
 import HeaderContainer from "../components/HeaderContainer";
+import ModalEditarPost from "../components/ModalEditarPost";
 import "../styles/materiaRoom.css";
 
 export function MateriaRoom() {
   const nomeMateria = useSelector((state) => state.nomeMateria);
   const nomeUsuario = useSelector((state) => state.userNome);
   const usuarioId = useSelector((state) => state.userId);
+  const dispatch = useDispatch();
   const params = useParams();
 
-  const [novaPergunta, setNovaPergunta] = useState("");
   const [post, setPost] = useState();
+  const [novaPergunta, setNovaPergunta] = useState("");
+  const [modalShow, setModalShow] = useState(false);
 
   const materiaId = params.id;
   const baseURL = `http://localhost:8080/materia/${materiaId}/posts`;
@@ -32,7 +35,7 @@ export function MateriaRoom() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [modalShow]);
 
   function adicionarPost(e) {
     e.preventDefault();
@@ -57,7 +60,7 @@ export function MateriaRoom() {
 
   function deletarPost(id) {
     axios
-      .delete(`${baseURL}/${id}`)
+      .delete(`http://localhost:8080/posts/${id}/delete`)
       .then((res) => {
         window.location.reload();
       })
@@ -66,12 +69,25 @@ export function MateriaRoom() {
       });
   }
 
-  function handleLike(postId) {}
+  function editarPost(post) {
+    dispatch({
+      type: "POST",
+      postId: post.id,
+      postPergunta: post.pergunta,
+    });
+    setModalShow(true);
+  }
 
   return (
     <div id="page-materiaRoom">
       <HeaderContainer />
       <Header />
+      <ModalEditarPost
+        show={modalShow}
+        onHide={() => {
+          setModalShow(false);
+        }}
+      />
       <Link to="/materias">
         <FaArrowLeft className="voltar" />
       </Link>
@@ -110,10 +126,7 @@ export function MateriaRoom() {
                 </div>
 
                 <div className="like-button">
-                  <button
-                    onClick={() => handleLike(post.id)}
-                    aria-label="Marcar como gostei"
-                  >
+                  <button aria-label="Marcar como gostei">
                     <FiThumbsUp className="like" />
                   </button>
                   <span>5</span>
@@ -122,13 +135,12 @@ export function MateriaRoom() {
                   <>
                     <div className="edit-button">
                       <button
-                        onClick={() => handleLike(post.id)}
+                        onClick={() => editarPost(post)}
                         aria-label="Editar Post"
                       >
                         <FaPen className="edit" />
                       </button>
                     </div>
-
                     <div className="delete-button">
                       <button
                         onClick={() => deletarPost(post.id)}

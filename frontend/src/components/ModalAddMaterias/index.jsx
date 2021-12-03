@@ -10,7 +10,7 @@ const validationMat = yup.object().shape({
 });
 
 function ModalAddMaterias(props) {
-  const baseURL = "https://utfhub.herokuapp.com/materia";
+  const baseURL = "http://localhost:8080/materia";
 
   const {
     register,

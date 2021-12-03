@@ -24,7 +24,7 @@ const validationLogin = yup.object().shape({
 });
 
 export function Login() {
-  const baseURL = "https://utfhub.herokuapp.com/usuario/login";
+  const baseURL = "http://localhost:8080/usuario/login";
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -49,7 +49,7 @@ export function Login() {
           userNome: res.data.nome,
           userEmail: res.data.email,
           userCampus: res.data.campus,
-          userCursor: res.data.curso,
+          userCurso: res.data.curso,
         });
         history.push("/home");
       })
