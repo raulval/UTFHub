@@ -32,19 +32,20 @@ public class PostService {
 
 	}
 
-	public boolean update(Post post) {
-		Optional<Post> postDB = repository.findById(post.getId());
+	public boolean update(Post post, Long id) {
+		Optional<Post> postDB = repository.findById(id);
 		if (postDB.isPresent()) {
+			post.setId(id);
 			repository.save(post);
 			return true;
 		}
 		return false;
 	}
 
-	public boolean deletePost(Post post) {
-		Optional<Post> postDB = repository.findById(post.getId());
+	public boolean deletePost(Long id) {
+		Optional<Post> postDB = repository.findById(id);
 		if (postDB.isPresent()) {
-			repository.delete(post);
+			repository.deleteById(id);
 			return true;
 		}
 		return false;

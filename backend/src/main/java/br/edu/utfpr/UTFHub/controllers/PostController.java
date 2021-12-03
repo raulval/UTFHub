@@ -49,18 +49,18 @@ public class PostController {
 		return ResponseEntity.ok("Pergunta enviado com sucesso !");
 	}
 
-	@PutMapping("/materia/{materiaId}/posts")
-	public ResponseEntity<String> update(@RequestBody Post post){
-		boolean res = postService.update(post);
+	@PutMapping("/posts/{id}/edit")
+	public ResponseEntity<String> update(@PathVariable (value = "id") Long id, @RequestBody Post post){
+		boolean res = postService.update(post, id);
 		if (!res) {
 			return ResponseEntity.badRequest().body("Dados inválidos !");
 		}
 		return ResponseEntity.ok("Pergunta atualizado com sucesso !");
 	}
 
-	@DeleteMapping("/materia/{materiaId}/posts/{id}")
-	public ResponseEntity<String> deletePost(@PathVariable (value = "materiaId") Long materiaId, @PathVariable (value = "id") Long id, Post post) {
-		boolean res = postService.deletePost(post);
+	@DeleteMapping("/posts/{id}/delete")
+	public ResponseEntity<String> deletePost(@PathVariable (value = "id") Long id) {
+		boolean res = postService.deletePost(id);
 		if (!res) {
 			return ResponseEntity.badRequest().body("Dados inválidos !");
 		}
