@@ -5,6 +5,7 @@ import br.edu.utfpr.UTFHub.repositories.MateriaRepository;
 import br.edu.utfpr.UTFHub.repositories.PostRepository;
 import br.edu.utfpr.UTFHub.service.MateriaService;
 import br.edu.utfpr.UTFHub.service.PostService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,18 +14,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-
+@RequiredArgsConstructor
 @RestController
 //@RequestMapping(value = "/post")
 public class PostController {
-	@Autowired
-	private PostService postService;
+//	@Autowired
+	private final PostService postService;
+
 
 //	@Autowired
-//	private PostRepository postRepository;
-
-	@Autowired
-	private MateriaService materiaService;
+//	private MateriaService materiaService;
 
 	@GetMapping("/materia/posts")
 	public ResponseEntity<Page<Post>> findAll(Pageable pageable){
